@@ -1,4 +1,4 @@
-CREATE TABLE listOfThings(id SERIAL PRIMARY KEY, name varchar(200), description varchar(200), due varchar(200), complete BOOLEAN);
+CREATE TABLE listOfThings(id SERIAL PRIMARY KEY, name varchar(200), description varchar(200), due varchar(200), complete varchar(200));
 
 INSERT INTO listOfThings(name, description, due, complete) VALUES('weekend 3 assignment','make a todo list app','9/18/2018', true);
 

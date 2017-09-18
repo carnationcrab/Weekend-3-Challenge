@@ -8,12 +8,14 @@ var port = 5000;
 //routing
 
 var indexModule = require('./modules/indexModule');
-//var toDoRoute = require('./routes/toDoRoute');
+var toDoRoute = require('./routes/toDoRoute');
+var poolRouter = require('./modules/pool')
 
 //uses
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.use('/', indexModule);
-//app.use('/toDos', toDoModule);
+app.use('/toDoRoute', toDoRoute);
 app.use(express.static('public'));
 
 //ears up

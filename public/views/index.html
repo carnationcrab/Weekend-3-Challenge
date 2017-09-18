@@ -22,21 +22,31 @@
                 Title: <input id="taskName" placeholder="Title of Task">
                 Description: <input id="taskDescription" placeholder="Description of Task"><br><br>
                 Due Date: <input id="dueDate" type="date">
-                 Check if Complete: <input id="completed" type="checkbox"><br><br>
+            </form>
+            <br>
+            <form id ="completionChecker">
+                Complete: <input id="completed" type="radio" value="complete">
+                Incomplete: <input id="incomplete" type="radio" value="incomplete">
+                <br><br>
                 
             </form>
             <button id="submit">Submit Task</button>
             <h2>Current Tasks</h2>
-            <div id="taskList">
+            <div id="taskHead">
                 <table class="table table-striped" id="taskTable">
                     <thead>
                         <th>Name</th>
                         <th>Description</th>
+                        <th>Due</th>
                         <th>Complete?</th>
                         <th>Delete</th>
                     </thead>
+                    <tbody id="taskList">
+
+                    </tbody>
                 </table>
             </div>
+            
 
             <h3>Completed Tasks</h3>
             <div id="completedTasks">
@@ -47,6 +57,9 @@
                                 <th>Date Completed</th>
                                 <th>Delete</th>
                             </thead>
+                            <tbody id="completedTaskList">
+
+                            </tbody>
                         </table>
             </div>
 
