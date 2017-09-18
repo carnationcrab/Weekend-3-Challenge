@@ -2,9 +2,8 @@ var verbose = true;
 var completeChecker = '<button class="complete btn btn-danger">Complete</button>'
 //var buttonDel = '<button id="delete" class="delete btn btn-danger">Delete</button>'
 
-$('#main').on('click', '.delete', deleteTask);
-
-
+$('#taskList').on('click', '.delete', deleteTask);
+$('#completedTaskList').on('click', '.delete', deleteTask);
 
 console.log('in client.js');
 
@@ -63,7 +62,6 @@ function getAllTasks(){
 function taskAppend(tasks) {
     //var delButtonThing = $('<button>', {class: 'delete-button', text:'remove me!'});
 
-
     $('#taskList').empty();
     $('#completedTaskList').empty();  
 
@@ -73,7 +71,7 @@ function taskAppend(tasks) {
         var due = tasks[i].due;
         var comp = tasks[i].complete;
         var id = tasks[i].id;
-        var buttonDel = '<button class="delete btn btn-danger" data-id="' + id + '">Delete</button>';
+        var buttonDel = ('<button class="delete" data-id="' + id + '">Delete</button>');
         
         if (comp === 'complete') {
             $('#completedTaskList').append('<tr data-id="' + id + 
@@ -82,6 +80,9 @@ function taskAppend(tasks) {
             '</td><td>' + due + 
             '</td><td>' + buttonDel +
             '</td><tr>');
+
+            console.log('button', buttonDel);
+            
         } else {
             $('#taskList').append('<tr data-id="' + id + '"><td>' + name +
             '</td><td>' + desc +
@@ -89,6 +90,8 @@ function taskAppend(tasks) {
             '</td><td>' + completeChecker +
             '</td><td>' + buttonDel +
             '</td><tr>');
+
+            console.log('button', buttonDel);
         }
         
     }
@@ -110,3 +113,4 @@ function deleteTask() {
 
 
 $(document).ready(onReady);
+
