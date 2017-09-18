@@ -1,9 +1,8 @@
 var verbose = true;
-var completeChecker = '<button class="complete btn btn-danger">Complete</button>'
+//var completeChecker = '<button class="complete btn btn-danger">Complete</button>'
 //var buttonDel = '<button id="delete" class="delete btn btn-danger">Delete</button>'
 
-$('#taskList').on('click', '.delete', deleteTask);
-$('#completedTaskList').on('click', '.delete', deleteTask);
+
 
 console.log('in client.js');
 
@@ -11,6 +10,13 @@ function onReady() {
     if (verbose) { console.log('in the onReady function')}
 
     $('#submit').on('click', addTask);
+    $('#taskList').on('click', '.delete', deleteTask);
+    $('#completedTaskList').on('click', '.delete', deleteTask);
+
+    $('#taskList').on('click', '.complete', markComplete);
+    $('#completedTaskList').on('click', '.complete', markComplete);
+    
+
     getAllTasks();
 
     
@@ -71,7 +77,8 @@ function taskAppend(tasks) {
         var due = tasks[i].due;
         var comp = tasks[i].complete;
         var id = tasks[i].id;
-        var buttonDel = ('<button class="delete" data-id="' + id + '">Delete</button>');
+        var buttonDel = ('<button class="delete btn btn-danger" data-id="' + id + '">Delete</button>');
+        var completeChecker = ('<button class="complete btn btn-danger" data-id="' + id + '">Complete</button>');
         
         if (comp === 'complete') {
             $('#completedTaskList').append('<tr data-id="' + id + 
@@ -111,6 +118,22 @@ function deleteTask() {
     });
   }
 
+function markComplete() {
+    console.log('clicked on complete!');
+    var thisID = $(this).data('id');
+    var aTask = {
+        id: thisID,
+    };
+    $.ajax( {
+        method: 'PUT',
+        url: '/toDoRoute/'+thisID,
+        data: aTask,
+        success: function(res){
+            console.log('completed a task, in the PUT client route', res);
+            getAllTasks();
+        }
+    })
+}
 
 $(document).ready(onReady);
 

@@ -67,4 +67,25 @@ router.delete('/:id', function(req,res){
     });
 });
 
-module.exports = router
+router.put('/:id', function(req, res) {
+    var completedID = req.params.id;
+    pool.connect(function(err, client, done) {
+        if (err) {
+            console.log('shit broke', err);
+            res.sendStatus(500);
+        } else {
+            var query = "UPDATE listofthings SET complete = 'complete' WHERE id=" + completedID + ';';
+            //var values = [completedID];
+            client.query(query, function(err, resObj) {
+                if (err) {
+                    console.log('shit broke', err);
+                    res.sendStatus(500);
+                } else {
+                    res.sendStatus(200);
+                }
+            });
+        }
+    });
+});
+
+module.exports = router;
