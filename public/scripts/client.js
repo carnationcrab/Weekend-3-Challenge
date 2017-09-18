@@ -44,14 +44,8 @@ function addTask() {
             if (verbose) {console.log('in client-side POST route');}
             getAllTasks();
         }
-    });
-    // $('#taskList').append('<tr><td>' + name +
-    // '</td><td>' + taskName +
-    // '</td><td>' + taskDesc +
-    // '</td><td>' + dueDate +
-    // '</td><td>' + complete + 
-    // '</td><tr>');
-}
+        });
+    }
 
 function getAllTasks(){
     $.ajax({
@@ -79,22 +73,22 @@ function taskAppend(tasks) {
         var due = tasks[i].due;
         var comp = tasks[i].complete;
         var id = tasks[i].id;
-        var buttonDel = $('<td><button class="delete btn-danger" data-id="' + id + '">Delete</button></td>');
+        var buttonDel = '<button class="delete btn btn-danger" data-id="' + id + '">Delete</button>';
         
         if (comp === 'complete') {
             $('#completedTaskList').append('<tr data-id="' + id + 
             '"><td>' + name +
             '</td><td>' + desc +
             '</td><td>' + due + 
-            '</td>' + buttonDel +
-            '<tr>');
+            '</td><td>' + buttonDel +
+            '</td><tr>');
         } else {
             $('#taskList').append('<tr data-id="' + id + '"><td>' + name +
             '</td><td>' + desc +
             '</td><td>' + due +
             '</td><td>' + completeChecker +
-            '</td>' + buttonDel +
-            '<tr>');
+            '</td><td>' + buttonDel +
+            '</td><tr>');
         }
         
     }
@@ -102,7 +96,7 @@ function taskAppend(tasks) {
 
 function deleteTask() {
     console.log('click!');
-    var thisID = $(this).parent().parent().data('id');
+    var thisID = $(this).data('id');
     console.log(thisID);
     $.ajax ({
       method: 'DELETE',
@@ -113,5 +107,6 @@ function deleteTask() {
       }
     });
   }
+
 
 $(document).ready(onReady);
