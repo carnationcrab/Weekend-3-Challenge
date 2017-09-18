@@ -111,17 +111,21 @@ function taskAppend(tasks) {
 };
 
 function deleteTask() {
+    var result = confirm("Want to delete?");
+    if (result) {
+        var thisID = $(this).data('id');
+        console.log(thisID);
+        $.ajax ({
+          method: 'DELETE',
+          url: '/toDoRoute/'+thisID,
+          success: function(res) {
+            console.log(res);
+            getAllTasks();
+          }
+        });
+    }    
     console.log('click!');
-    var thisID = $(this).data('id');
-    console.log(thisID);
-    $.ajax ({
-      method: 'DELETE',
-      url: '/toDoRoute/'+thisID,
-      success: function(res) {
-        console.log(res);
-        getAllTasks();
-      }
-    });
+    
   }
 
 function markComplete() {
