@@ -47,4 +47,24 @@ router.post('/', function(req, res){
     });
 });
 
+router.delete('/:id', function(req,res){
+    var dbID = req.params.id;
+    console.log('dbID', dbID);
+    pool.connect(function (err, client, done){
+        if(err) {
+            res.sendStatus(500);
+        } else {
+            var text = 'DELETE FROM listofthings WHERE id = $1;';
+            client.query(text, [dbID], function(){
+                done();
+                if (err) {
+                    res.sendStatus(500);
+                } else {
+                    res.sendStatus(202);
+                }
+            });
+        }
+    });
+});
+
 module.exports = router
