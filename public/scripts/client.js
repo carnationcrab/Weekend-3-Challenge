@@ -76,6 +76,23 @@ function taskAppend(tasks) {
 
     $('#taskList').empty();
     $('#completedTaskList').empty();  
+    var currentDate = new Date();
+    
+    function formatDate(date) {
+        var monthNames = [
+          "January", "February", "March",
+          "April", "May", "June", "July",
+          "August", "September", "October",
+          "November", "December"
+        ];
+      
+        var day = date.getDate();
+        var monthIndex = date.getMonth();
+        var year = date.getFullYear();
+      
+        return day + ' ' + monthNames[monthIndex] + ' ' + year;
+      }
+      
 
     for (var i = 0; i < tasks.length; i++) {
         var name = tasks[i].name;
@@ -85,12 +102,16 @@ function taskAppend(tasks) {
         var id = tasks[i].id;
         var buttonDel = ('<button class="delete btn btn-danger" data-id="' + id + '">Delete</button>');
         var completeChecker = ('<button class="complete btn btn-success" data-id="' + id + '">Complete</button>');
-        
+        //var niceDue = formatDate(due);
+        var niceDay = formatDate(currentDate);
+
         if (comp === 'complete') {
+            
             $('#completedTaskList').append('<tr data-id="' + id + 
             '"><td>' + name +
             '</td><td>' + desc +
             '</td><td>' + due + 
+            '</td><td>' + niceDay +
             '</td><td>' + buttonDel +
             '</td><tr>');
 

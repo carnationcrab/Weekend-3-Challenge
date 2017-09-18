@@ -41,10 +41,7 @@ h1 {
 .container {
     background-color: #FCEFEF;
     border-radius: 25px;
-}
-
-html {
-    background-color: #ffffff;
+    position: relative;
 }
 
 table {
