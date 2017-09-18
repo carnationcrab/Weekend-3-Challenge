@@ -1,34 +1,52 @@
-tbody {
-    color: black
+#taskTable {
+    color: #424242;
+    background-color: #FCD29F;
+    border-color: #FCAB64;
+    border: 5px;
+}
+
+#completedTable {
+    color: #424242;
+    background-color: #A1FCDF;
+    border: 5px, #7FD8BE;
 }
 
 input {
-    background-color: lightpink;
     color: black
 }
 
 body {
-    background-color: #2353a0;
-    font-family: helvetica;
+    background-color: #ffffff;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
     margin: auto;
-    color: #FFFFFF;
+    color: #6f7277;
 }
 
 h2 {
-    color: #FFFFFF;
+    color: #424242;
     text-align: center;
-
-    background-color: #2cbce0;
 
 }
 
 h3 {
-    color: #FFFFFF;
-    background-color: #2cbce0;
+    color: #424242;
     text-align: center;
 }
 
 h1 {
     text-align: center;
-    color: coral;
+    color: #00c7ff;
+}
+
+.container {
+    background-color: #FCEFEF;
+    border-radius: 25px;
+}
+
+html {
+    background-color: #ffffff;
+}
+
+table {
+    border-radius: 10px;
 }

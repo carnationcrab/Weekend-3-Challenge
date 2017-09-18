@@ -48,6 +48,12 @@ function addTask() {
         success: function() {
             if (verbose) {console.log('in client-side POST route');}
             getAllTasks();
+            $( '#addTask' ).each(function(){
+                this.reset();
+            });
+            $( '#completionChecker' ).each(function(){
+                this.reset();
+            });
         }
         });
     }
