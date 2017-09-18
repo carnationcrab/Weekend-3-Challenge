@@ -78,7 +78,7 @@ function taskAppend(tasks) {
         var comp = tasks[i].complete;
         var id = tasks[i].id;
         var buttonDel = ('<button class="delete btn btn-danger" data-id="' + id + '">Delete</button>');
-        var completeChecker = ('<button class="complete btn btn-danger" data-id="' + id + '">Complete</button>');
+        var completeChecker = ('<button class="complete btn btn-success" data-id="' + id + '">Complete</button>');
         
         if (comp === 'complete') {
             $('#completedTaskList').append('<tr data-id="' + id + 

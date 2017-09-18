@@ -1,0 +1,34 @@
+tbody {
+    color: black
+}
+
+input {
+    background-color: lightpink;
+    color: black
+}
+
+body {
+    background-color: #2353a0;
+    font-family: helvetica;
+    margin: auto;
+    color: #FFFFFF;
+}
+
+h2 {
+    color: #FFFFFF;
+    text-align: center;
+
+    background-color: #2cbce0;
+
+}
+
+h3 {
+    color: #FFFFFF;
+    background-color: #2cbce0;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+    color: coral;
+}
